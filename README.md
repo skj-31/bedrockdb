@@ -1,21 +1,21 @@
-# BedrockDB
+# Keystonedb
 
-**BedrockDB** is a **disk-based, log-structured key-value database** built from first principles to explore **database internals, durability guarantees, and distributed systems tradeoffs**. It is designed with a strong emphasis on **write throughput, crash safety, and predictable performance**, while using memory purely as an optimization layer.
+**Keystonedb** is a **disk-based, log-structured key-value database** built from first principles to explore **database internals, durability guarantees, and distributed systems tradeoffs**. It is designed with a strong emphasis on **write throughput, crash safety, and predictable performance**, while using memory purely as an optimization layer.
 
 > Disk is the source of truth. Memory accelerates, but never defines correctness.
 
 ---
 
-## Why BedrockDB?
+## Why Keystonedb?
 
-Modern databases hide complexity behind abstractions. BedrockDB intentionally exposes and documents those complexities to answer questions like:
+Modern databases hide complexity behind abstractions. Keystonedb intentionally exposes and documents those complexities to answer questions like:
 
 * How do databases guarantee durability?
 * Why do LSM trees favor writes but complicate reads?
 * Why is compaction the real bottleneck?
 * How do replicas recover after failures?
 
-BedrockDB is both:
+Keystonedb is both:
 
 * A **practical storage engine**, and
 * A **learning-oriented database internals project**
@@ -79,7 +79,7 @@ BedrockDB is both:
 
 ## Storage Model
 
-BedrockDB is **not an in-memory database**.
+Keystonedb is **not an in-memory database**.
 
 ### Disk (Source of Truth)
 
@@ -133,7 +133,7 @@ Reads are optimized to avoid disk access when possible, but correctness never de
 
 ## Compaction
 
-BedrockDB uses **LSM-tree compaction** to:
+Keystonedb uses **LSM-tree compaction** to:
 
 * Merge immutable SSTables
 * Remove overwritten keys
@@ -148,7 +148,7 @@ Compaction runs in the background and is carefully throttled to avoid write stal
 
 ## Replication & Consistency
 
-BedrockDB follows a **leader–follower replication model**:
+Keystonedb follows a **leader–follower replication model**:
 
 * All writes go to the leader
 * WAL entries are shipped to followers
@@ -175,7 +175,7 @@ Recovery is deterministic and does not require external coordination.
 
 ## Observability
 
-BedrockDB exposes:
+Keystonedb exposes:
 
 * Write / read latency metrics
 * Compaction statistics
@@ -186,7 +186,7 @@ Every subsystem is measurable and inspectable.
 
 ---
 
-## What BedrockDB Is NOT
+## What Keystonedb Is NOT
 
 * Not a production-ready database
 * Not optimized for low-latency in-memory workloads
